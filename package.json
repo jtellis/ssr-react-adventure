@@ -1,0 +1,9 @@
+{
+  "name": "ssr-react-adventure",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:jtellis/ssr-react-adventure.git",
+  "author": "Jesse Ellis <jessetellis@gmail.com>",
+  "license": "UNLICENSED",
+  "private": true
+}
