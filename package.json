@@ -1,12 +1,34 @@
 {
   "name": "ssr-react-adventure",
   "version": "1.0.0",
-  "main": "index.js",
   "repository": "git@github.com:jtellis/ssr-react-adventure.git",
   "author": "Jesse Ellis <jessetellis@gmail.com>",
   "license": "UNLICENSED",
   "private": true,
+  "targets": {
+    "server": {
+      "context": "node"
+    },
+    "client": {
+      "context": "browser"
+    }
+  },
+  "scripts": {
+    "clean": "rm -r .parcel-cache dist",
+    "build-server": "yarn parcel build --target server --dist-dir dist src/server/index.js",
+    "build-client": "yarn parcel build --target client --dist-dir dist src/client/index.html",
+    "build": "yarn build-server && yarn build-client",
+    "clean-build": "yarn clean && yarn build",
+    "start": "yarn node dist/server/index.js",
+    "clean-start": "yarn clean-build && yarn start"
+  },
   "devDependencies": {
+    "@babel/preset-react": "^7.12.10",
     "parcel": "^2.0.0-beta.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   }
 }
