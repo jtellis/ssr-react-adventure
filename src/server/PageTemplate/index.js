@@ -9,7 +9,6 @@ export default ({ insert }) => (
     </head>
     <body>
         <div id="app">{ insert }</div>
-        <script src="./index.js"></script>
     </body>
     </html>
 );
