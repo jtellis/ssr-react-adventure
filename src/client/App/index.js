@@ -1,4 +1,9 @@
 import React from 'react';
-import Home from './Home';
+import List from './List';
 
-export default () => <Home />;
+export default () => (
+    <React.Fragment>
+        <h1>List:</h1>
+        <List />
+    </React.Fragment>
+);

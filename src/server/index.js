@@ -1,33 +1,21 @@
-const path = require('path');
-const fs = require('fs');
+import express from 'express';
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import App from '../client/App';
+import PageTemplate from './PageTemplate';
 
-const express = require('express');
-const React = require('react');
-const ReactDOMServer = require('react-dom/server');
-const { default: App } = require('../client/App');
+import seedData from './seed.json';
 
 const app = express();
 const port = 5000;
 
-const distDir = './dist';
-const clientDir = `${distDir}/client`
+app.get('/', (req, res) => res.send(
+      `<!DOCTYPE html>
+      ${ ReactDOMServer.renderToString( <PageTemplate insert={ <App /> } /> ) }`
+));
 
-app.get('/', (req, res) => {
-  let indexPath = path.resolve(`${clientDir}/index.html`);
 
-  fs.readFile(indexPath, 'utf8', (err, data) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).send(err);
-    }
-    return res.send(
-      data.replace(
-        '<div id="app"></div>',
-        `<div id="app">${ ReactDOMServer.renderToString(<App />) }</div>`
-      )
-    );
-  });
-});
+app.get('/api/items', (req, res) => res.send(seedData.items));
 
 app.use( express.static('./dist/client') );
 
