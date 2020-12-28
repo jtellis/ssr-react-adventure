@@ -11,7 +11,7 @@ const port = 5000;
 
 app.get('/', (req, res) => res.send(
       `<!DOCTYPE html>
-      ${ ReactDOMServer.renderToString( <PageTemplate insert={ <App /> } /> ) }`
+      ${ ReactDOMServer.renderToStaticMarkup( <PageTemplate insert={ <App /> } /> ) }`
 ));
 
 
