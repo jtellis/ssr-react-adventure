@@ -20,10 +20,12 @@
     "build": "yarn build-server && yarn build-client",
     "clean-build": "yarn clean && yarn build",
     "start": "yarn node dist/server/index.js",
-    "clean-start": "yarn clean-build && yarn start"
+    "clean-start": "yarn clean-build && yarn start",
+    "watch-server": "(yarn parcel watch --target server --dist-dir dist src/server/index.js & yarn nodemon dist/server/index.js)"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.12.10",
+    "nodemon": "^2.0.6",
     "parcel": "^2.0.0-beta.1"
   },
   "dependencies": {
