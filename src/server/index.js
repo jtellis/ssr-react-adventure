@@ -17,7 +17,7 @@ app.get('/', (req, res) => res.send(
 
 let items = [...seedData.items];
 
-app.post('/api/items', bodyParser.json(), (req, res) => {
+app.post('/api/items', bodyParser.urlencoded({extended: false}), (req, res) => {
   items.push(req.body);
   res.sendStatus(201);
 });
